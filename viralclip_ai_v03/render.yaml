@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: viralclip-ai
+    runtime: docker
+    plan: starter
+    healthCheckPath: /
+    disk:
+      name: viralclip-data
+      mountPath: /var/data
+      sizeGB: 20
+    envVars:
+      - key: MAX_UPLOAD_MB
+        value: "2048"
+      - key: WHISPER_MODEL
+        value: base
+      - key: WHISPER_DEVICE
+        value: cpu
+      - key: WHISPER_COMPUTE_TYPE
+        value: int8
+      - key: VISION_API_BASE_URL
+        sync: false
+      - key: VISION_API_KEY
+        sync: false
+      - key: VISION_MODEL
+        sync: false
